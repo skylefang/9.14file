@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	    /*
+	     实现功能：把自己写的一个函数扩成数组构造函数Array中的一个方法，使所有实例出来的数组中都可以拥有此方法，之后声明的数组中直接调用此方法 即可
+	     解决：往数组对象的构造函数的原型对象中添加方法，但不可以写成json形式的，如果写会覆盖原来的原型对象，所以直接加就可以
+	     */
+
+	    let arr = [1,2,3,4,5,1,2,3];
+		Array.prototype.delRepeat=function(){
+            let newarr=[];
+	       for(let i=0;i<this.length;i++){
+	       	 let flag=true;   // 用flag标记每一个i
+	         for(let j=i+1;j<this.length;j++){
+	         	if(this[i]==this[j]){
+	         		flag=false;
+	         		break;
+	         	}
+	         }
+	            if(flag){
+	       	       newarr.push(this[i])
+	            }
+	       }	      
+	       return newarr;
+       }
+     
+       let result= arr.delRepeat();
+       console.log(result);
+	</script>
+</body>
+</html>

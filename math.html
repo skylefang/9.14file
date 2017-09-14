@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>math</title>
+</head>
+<body>
+	<script>
+		/*
+		 在一个数组中随机的取出若干个不重复的数组元素
+		 */
+		let arr=['a','b','c',1,2,3];
+		function randomGet(arr,num){
+			let newarr = [];
+			for(let i=0;i<num;i++){  // i指的是循环的次数，一共循环num次
+				let index=Math.floor(Math.random()*arr.length);//每循环一次拿出一个随机数，对应数组元素的下标
+				if(!newarr.includes(arr[index])){
+					newarr.push(arr[index]);
+				}else{
+					i--;  // 有重复的随机数时，即拿出的数组元素重复，就让循环再进行一次
+				}	
+			}
+            return newarr;
+		}
+		console.log(randomGet(arr,3));
+
+
+        // 第二种方法
+		let arr1=['a','b','c',1,2,3];
+		function randomGet1(arr,num){
+			let newarr = [];
+			for(let i=0;i<num;i++){
+				let result=Math.floor(Math.random()*arr.length);
+				/*
+				  判断是否存在，不存在，放进去。存在，再产生一个随机数，再判断，如果还有就再产生一个随机数进行判断一直到其中没有为止再放入
+				 */
+				while(newarr.includes(arr[result])){
+				  result=Math.floor(Math.random()*arr.length);
+				}
+				newarr.push(arr[result]);				
+			}
+            return newarr;
+		}
+		console.log(randomGet1(arr1,4));
+
+	</script>
+</body>
+</html>

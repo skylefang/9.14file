@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Array</title>
+</head>
+<body>
+	<script>
+	   // push()
+	   let arr = ['a','b','c','d','e'];
+	   let result=arr.push(1,2,3,4,5);
+	   console.log(arr);
+	   console.log(result);
+       // unshift()
+       let result1=arr.unshift('x','y','z');
+       console.log(arr);
+       console.log(result1);
+       // pop()
+       let del = arr.pop();
+       console.log(arr);
+       console.log(del);
+       // shift()
+       let del1 = arr.shift()
+       console.log(arr);
+       console.log(del1);
+       // splice(pos,num,ele,ele1) 
+       let newarr = ['a','b','c','d','e'];
+       let result2=newarr.splice(1,2);
+       console.log(newarr);
+       console.log(result2);
+       let result3=newarr.splice(2,0,'x','y','z');
+       console.log(newarr);
+       console.log(result3);
+       // 练习
+       let arr1 = [1,2,3,4,5,6];
+       let arr2 = ['a','b','c','d'];
+       arr1.push(...arr2);
+       console.log(arr1);
+
+
+
+       // 数组去重
+       // 不重复放新数组，判断新数组——>arr[i],放
+       let arr3 = [1,2,3,4,5,1,2,3];
+       // 第一种方法
+       function dlRepeat(arr3){
+       	   let newarr3=[];
+           for(let i=0;i<arr3.length;i++){
+             if(!newarr3.includes(arr3[i])){
+             	newarr3.push(arr3[i]);
+             }
+           }
+           return newarr3;
+       }
+       console.log(dlRepeat(arr3));
+       // 第二种方法
+       function dlRepeat1(arr3){
+	       let newarr4=[];
+	       for(let i=0;i<arr3.length;i++){
+	       	 let flag=true;   // 用flag标记每一个i
+	         for(let j=i+1;j<arr3.length;j++){
+	         	if(arr3[i]==arr3[j]){
+	         		flag=false;
+	         		break;
+	         	}
+	         }
+	            if(flag){
+	       	       newarr4.push(arr3[i])
+	            }
+	       }	      
+	       return newarr4;
+       }
+       console.log(dlRepeat1(arr3));
+
+       
+       
+	</script>
+</body>
+</html>
